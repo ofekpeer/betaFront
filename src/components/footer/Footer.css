@@ -1,0 +1,26 @@
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(20, 26, 34, 0.1);
+  background: rgba(251, 250, 247, 0.55);
+}
+.footer__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+}
+.footer__links {
+  display: flex;
+  gap: 12px;
+}
+.footer__links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.footer__links a:hover {
+  text-decoration: underline;
+}

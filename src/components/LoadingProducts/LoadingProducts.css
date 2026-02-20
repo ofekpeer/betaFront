@@ -1,0 +1,82 @@
+/* Skeleton */
+.spSkeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.spSkCard {
+  background: rgba(251, 250, 247, 0.78);
+  border: 1px solid rgba(20, 26, 34, 0.1);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--sp-shadow2);
+  padding-bottom: 12px;
+}
+.spSkImg {
+  height: 210px;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 26, 34, 0.06),
+    rgba(20, 26, 34, 0.02),
+    rgba(20, 26, 34, 0.06)
+  );
+  background-size: 220% 100%;
+  animation: sk 1.2s ease-in-out infinite;
+}
+.spSkLine {
+  height: 12px;
+  margin: 12px 12px 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 26, 34, 0.06),
+    rgba(20, 26, 34, 0.02),
+    rgba(20, 26, 34, 0.06)
+  );
+  background-size: 220% 100%;
+  animation: sk 1.2s ease-in-out infinite;
+}
+.spSkLine--short {
+  width: 60%;
+}
+
+@keyframes sk {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 220% 0%;
+  }
+}
+
+@media (max-width: 980px) {
+  .spGrid,
+  .spSkeletonGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .spFilters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .spField--sort {
+    min-width: unset;
+  }
+  .spMeta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .spHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .spGrid,
+  .spSkeletonGrid {
+    grid-template-columns: 1fr;
+  }
+  .spCard__imgWrap,
+  .spSkImg {
+    height: 230px;
+  }
+}
