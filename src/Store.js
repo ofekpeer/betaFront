@@ -7,10 +7,9 @@ const cheackLocalStorage = async (key, defaultValue) => {
   const storedValue = localStorage.getItem(key);
   if (storedValue) {
     try {
-      const checkCart = await axios.post(
-        'http://localhost:5000/api/orders/checkCart',
-        { cartItems: JSON.parse(storedValue) },
-      );
+      const checkCart = await axios.post('/api/orders/checkCart', {
+        cartItems: JSON.parse(storedValue),
+      });
       if (checkCart.data) {
         return JSON.parse(storedValue);
       } else return [];
