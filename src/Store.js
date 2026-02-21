@@ -7,7 +7,7 @@ const cheackLocalStorage = async (key, defaultValue) => {
   const storedValue = localStorage.getItem(key);
   if (storedValue) {
     try {
-      const checkCart = await axios.post('/api/orders/checkCart', {
+      const checkCart = await axios.post('https://betabackend-17nq.onrender.com/api/orders/checkCart', {
         cartItems: JSON.parse(storedValue),
       });
       if (checkCart.data) {
