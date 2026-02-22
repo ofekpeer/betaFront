@@ -96,6 +96,7 @@
 }
 
 .spInput {
+  min-width: 0px;
   height: 44px;
   border-radius: 14px;
   border: 1px solid rgba(20, 26, 34, 0.12);
@@ -148,6 +149,7 @@
 }
 
 .spSelect {
+  min-width: 0px;
   height: 44px;
   border-radius: 14px;
   border: 1px solid rgba(20, 26, 34, 0.12);
