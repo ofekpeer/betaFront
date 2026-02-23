@@ -223,7 +223,7 @@ body {
   position: relative;
   max-width: var(--max);
   margin: 0 auto;
-  padding: 42px 18px 64px;
+  padding: 8px 18px 64px;
 
   /* בסיס */
   background: linear-gradient(
@@ -284,6 +284,7 @@ body {
 }
 
 .section {
+  margin: 24px 0px 0px;
 }
 .section__head {
   margin-bottom: 16px;
@@ -422,7 +423,6 @@ body {
   color: var(--muted);
   line-height: 1.6;
 }
-
 
 /* Responsive */
 
@@ -713,12 +713,3 @@ body {
     display: none;
   }
 }
-
-
-
-
-
-
-
-
-

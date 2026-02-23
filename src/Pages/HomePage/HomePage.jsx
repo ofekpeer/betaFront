@@ -8,6 +8,7 @@ import { getError } from '../../utils';
 import LoadingProducts from '../../components/LoadingProducts/LoadingProducts';
 import Laoding from '../../components/Loading/Loading';
 import Footer from '../../components/footer/Footer';
+import Category from '../../components/category/Category';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -47,7 +48,7 @@ export default function HomePage() {
       setTimeout(() => {
         setPageLoading(false);
       }, 1000);
-      timeout();
+    timeout();
     return clearTimeout(timeout);
   }, []);
 
@@ -118,11 +119,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Products */}
       <main className="main">
+        {/* category */}
+        <Category></Category>
+
+        {/* Products */}
         <section className="section" id="products">
           <div className="section__head">
-            <h2 className="section__title">מבחר מזוזות</h2>
+            <h2 className="section__title">מוצרים מובילים</h2>
             <p className="section__sub">בחרו את הסגנון שמתאים לבית שלכם</p>
           </div>
 

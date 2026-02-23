@@ -273,16 +273,7 @@ export default function ProductPage() {
             </aside>
 
             <section>
-              <video
-                autoplay="autoplay"
-                muted
-                loop
-                class="video-bg"
-                height="400px"
-                width="600px"
-              >
-                <source src="/video.mp4" type="video/mp4" />
-              </video>
+              <img className='gif' src="/video.gif" alt="video gif" />
             </section>
           </div>
 
