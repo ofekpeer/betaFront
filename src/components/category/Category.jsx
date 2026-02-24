@@ -29,7 +29,6 @@ export default function Category() {
       </div>
 
       <div
-        style={{ gridTemplateColumns: `repeat(${categorys.length}, 1fr)` }}
         className="catGrid"
       >
         {categorys.map((c, i) => (

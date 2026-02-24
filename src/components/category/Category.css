@@ -1,10 +1,8 @@
-
-
-
 /* Categories */
 .catGrid {
   display: grid;
   gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .catCard {
@@ -19,7 +17,6 @@
   overflow: hidden;
   background: rgba(251, 250, 247, 0.85);
   height: 350px;
-  
 }
 
 .catCard::before {
@@ -29,8 +26,16 @@
   pointer-events: none;
   opacity: 0.9;
   background:
-    radial-gradient(400px 240px at 20% 10%, rgba(198, 161, 90, 0.22), transparent 60%),
-    radial-gradient(380px 220px at 90% 0%, rgba(20, 26, 34, 0.12), transparent 60%);
+    radial-gradient(
+      400px 240px at 20% 10%,
+      rgba(198, 161, 90, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      380px 220px at 90% 0%,
+      rgba(20, 26, 34, 0.12),
+      transparent 60%
+    );
 }
 
 .catCard:hover {
@@ -92,7 +97,7 @@
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
-  font-size: 15px
+  font-size: 15px;
 }
 
 .catCard__arrow {
@@ -111,7 +116,11 @@
 
 /* Tone variations */
 .catCard--navy {
-  background: linear-gradient(180deg, rgba(20, 26, 34, 0.92), rgba(15, 20, 27, 0.92));
+  background: linear-gradient(
+    180deg,
+    rgba(20, 26, 34, 0.92),
+    rgba(15, 20, 27, 0.92)
+  );
   border-color: rgba(255, 255, 255, 0.08);
 }
 .catCard--navy .catCard__title,
@@ -126,13 +135,21 @@
   border-color: rgba(255, 255, 255, 0.12);
 }
 .catCard--navy .catCard__pill {
-  background: linear-gradient(180deg, rgba(198, 161, 90, 0.98), rgba(184, 146, 70, 0.98));
+  background: linear-gradient(
+    180deg,
+    rgba(198, 161, 90, 0.98),
+    rgba(184, 146, 70, 0.98)
+  );
   color: #141a22;
   border-color: rgba(0, 0, 0, 0.06);
 }
 
 .catCard--dark {
-  background: linear-gradient(180deg, rgba(18, 20, 26, 0.95), rgba(10, 12, 16, 0.95));
+  background: linear-gradient(
+    180deg,
+    rgba(18, 20, 26, 0.95),
+    rgba(10, 12, 16, 0.95)
+  );
   border-color: rgba(255, 255, 255, 0.08);
 }
 .catCard--dark .catCard__title,
@@ -148,7 +165,11 @@
 }
 
 .catCard--gold {
-  background: linear-gradient(180deg, rgba(251, 250, 247, 0.9), rgba(242, 239, 232, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(251, 250, 247, 0.9),
+    rgba(242, 239, 232, 0.9)
+  );
 }
 .catCard--paper {
   background: rgba(251, 250, 247, 0.9);
@@ -157,7 +178,7 @@
 /* Responsive */
 @media (max-width: 900px) {
   .catGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (max-width: 560px) {
