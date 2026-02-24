@@ -99,7 +99,7 @@ body {
   min-height: 520px;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
 }
 .hero__content {
   max-width: 560px;

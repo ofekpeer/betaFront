@@ -61,9 +61,7 @@ export default function HomePage() {
       <NavBar />
 
       {/* Hero */}
-      <section style={{
-        height: window.innerHeight
-      }} className="hero">
+      <section className="hero">
         <div
           className="hero__bg"
           // style={{
