@@ -63,17 +63,37 @@ export default function HomePage() {
       <section className="hero">
         <div
           className="hero__bg"
-          style={{
-            '--hero-desktop': `url("/background.png")`,
-            '--hero-mobile': `url("/background-mobile.jpeg")`,
-            '--hero-iped': `url("/background-mobile.jpeg")`,
-          }}
+          // style={{
+          //   '--hero-desktop': `url("/background.png")`,
+          //   '--hero-mobile': `url("/background-mobile.jpeg")`,
+          //   '--hero-iped': `url("/background-mobile.jpeg")`,
+          // }}
         />
 
         {/* beata מעל הרקע */}
-        <img className="hero-beata" src="/beata.png" alt="Beata" />
+        {/* <img className="hero-beata" src="/beata.png" alt="Beata" /> */}
 
         <div className="hero__overlay" />
+        <video
+          autoPlay // הפעלה אוטומטית
+          loop // לולאה אינסופית
+          muted // חובה! בלי זה ה-autoPlay ייחסם
+          playsInline // מונע קפיצה למסך מלא באייפון
+          webkit-playsinline="true"
+          preload="auto" // טעינה מראש של הסרטון
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            pointerEvents: 'none', // מבטל אינטראקציה (כמו GIF)
+            display: 'block', // מוודא שהאלמנט תופס מקום
+            position: 'absolute',
+            display: 'flex',
+          }}
+        >
+          <source src={'/vid.mp4'} type="video/mp4" />
+          הדפדפן שלך לא תומך בוידאו.
+        </video>
         <div className="hero__inner">
           <div className="hero__content">
             <p className="hero__eyebrow">קולקציית פרימיום</p>
@@ -121,7 +141,9 @@ export default function HomePage() {
 
       <main className="main">
         {/* category */}
-        <Category></Category>
+        <section className="section" id="categorys">
+          <Category></Category>
+        </section>
 
         {/* Products */}
         <section className="section" id="products">

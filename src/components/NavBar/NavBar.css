@@ -52,7 +52,7 @@
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   background: rgba(20, 26, 34, 0.04);
   border: 1px solid rgba(20, 26, 34, 0.06);
@@ -60,7 +60,6 @@
 }
 
 .mobileMenu__link::after {
-  content: '›';
   opacity: 0.55;
   font-size: 18px;
   transform: rotate(180deg); /* כי RTL */
@@ -69,6 +68,10 @@
 .mobileMenu__link:hover {
   background: rgba(20, 26, 34, 0.06);
   transform: translateY(-1px);
+}
+
+.mobileMenu__link__inner{
+  
 }
 
 .mobileMenu__divider {

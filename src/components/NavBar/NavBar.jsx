@@ -2,9 +2,12 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../../Store';
+import axios from 'axios';
 
 export default function NavBar() {
   const [options, setOptions] = useState(false);
+  const [categorys, setCategorys] = useState([]);
+
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const navigate = useNavigate();
@@ -13,6 +16,19 @@ export default function NavBar() {
     cart: { items },
   } = state;
   const cartItemsCount = items.reduce((a, c) => a + c.quantity, 0);
+
+  useEffect(() => {
+    const getAllCategory = async () => {
+      try {
+        const res = await axios.get('/api/category');
+        setCategorys(res.data.category);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getAllCategory();
+  }, []);
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -126,36 +142,46 @@ export default function NavBar() {
         />
 
         <div className={`mobileMenu ${options ? 'isOpen' : ''}`} role="menu">
-          <a
-            className="mobileMenu__link"
-            href="/#products"
-            onClick={() => setOptions(false)}
-          >
-            קולקציה
-          </a>
+          {categorys.map((i) => (
+            <a
+              key={i._id}
+              className="mobileMenu__link mobileMenu__link__inner"
+              href="/#categorys"
+              onClick={() => setOptions(false)}
+            >
+              {i.title}
+            </a>
+          ))}
           <a
             className="mobileMenu__link"
             href="/about"
             onClick={() => setOptions(false)}
           >
-            אודות
+            קצת עליינו
           </a>
           <a
             className="mobileMenu__link"
-            href="/#about"
+            href="https://wa.me/972507487234?text='היי אשמח לפרטים'"
             onClick={() => setOptions(false)}
           >
-            שאלות
+            דברו איתנו
+          </a>
+          <a
+            className="mobileMenu__link"
+            href="/#categorys"
+            onClick={() => setOptions(false)}
+          >
+            שאלות נפוצות
           </a>
 
           <div className="mobileMenu__divider" />
 
           <a
             className="mobileMenu__cta"
-            href="/"
+            href="/category/699cd1229ca1fe188a713f77"
             onClick={() => setOptions(false)}
           >
-            לרכישה
+            מומלצים
           </a>
         </div>
       </div>
