@@ -116,7 +116,7 @@ export default function HomePage() {
               </a>
             </div>
 
-            <div className="hero__badges">
+            {/* <div className="hero__badges">
               <div className="badge">
                 <span style={{ paddingTop: '4px' }} className="badge__icon">
                   <img src="/icons/delivery.svg" alt="Gift Box" />
@@ -135,7 +135,7 @@ export default function HomePage() {
                 </span>
                 עבודת יד
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
