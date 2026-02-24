@@ -145,8 +145,8 @@ export default function NavBar() {
           {categorys.map((i) => (
             <a
               key={i._id}
-              className="mobileMenu__link mobileMenu__link__inner"
-              href="/#categorys"
+              className="mobileMenu__link"
+              href={`/category/${encodeURIComponent(i._id)}`}
               onClick={() => setOptions(false)}
             >
               {i.title}

@@ -1,9 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Store } from '../../Store';
 import './MaybeYouLikeAlso.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer({ recommendations }) {
   const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCartBtn = useRef();
+  const navigate = useNavigate();
+
   const addRecToCart = (p) => {
     ctxDispatch({
       type: 'ADD TO CART',
@@ -15,13 +19,21 @@ export default function Footer({ recommendations }) {
     });
   };
 
+  const handelGoToProduct = ( p) => {
+    navigate('/product/' + p.name);
+  };
+
   return (
     <div className="cpSummary__rec">
       <div className="cpSummary__title">אולי תאהב גם</div>
 
       <div className="cpRecGrid">
         {recommendations.map((p) => (
-          <div key={p.id} className="cpRec">
+          <div
+            onClick={() => handelGoToProduct(p)}
+            key={p.id}
+            className="cpRec"
+          >
             <div className="cpRec__imgWrap">
               <img className="cpRec__img" src={p.mainImage} alt={p.name} />
               <div className="cpRec__chip">{p.badges[0]}</div>
@@ -33,7 +45,10 @@ export default function Footer({ recommendations }) {
                 <div className="cpRec__price">₪{p.price}</div>
                 <button
                   className="cpMiniBtn"
-                  onClick={() => addRecToCart(p)}
+                  onClick={(e) => {
+                    e.stopPropagation(); // מונע את הקליק על ההורה
+                    addRecToCart(p);
+                  }}
                   type="button"
                 >
                   + הוסף

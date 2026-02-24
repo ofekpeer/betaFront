@@ -193,7 +193,7 @@ export default function CartPage() {
                   <article key={it.id} className="cpItem">
                     <a
                       className="cpItem__imgWrap"
-                      href="/product"
+                      href={`/product/${it.name}`}
                       aria-label="למוצר"
                     >
                       <img
