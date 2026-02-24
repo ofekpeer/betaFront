@@ -9,6 +9,7 @@ import Clarity from './Clarity';
 import SearchPage from './Pages/searchPage/searchPage';
 import WelcomePopup from './components/WelcomePopup/WelcomePopup';
 import AboutUsPage from './Pages/AboutUsPage/AboutUsPage';
+import CategoryPage from './Pages/CategoryPage/CategoryPage';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route exact path="/product/:name" element={<ProductPage />} />
           <Route exact path="/cart" element={<CartPage />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path='/about' element={<AboutUsPage/>}/>
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/category/:_id" element={<CategoryPage />} />
         </Routes>
       </BrowserRouter>
       <WelcomePopup></WelcomePopup>

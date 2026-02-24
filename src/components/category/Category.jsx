@@ -1,8 +1,25 @@
+import axios from 'axios';
 import './Category.css';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function Category() {
   const navigate = useNavigate();
+  const [categorys, setCategorys] = useState([]);
+
+  const cssOptions = ['gold', 'navy', 'paper'];
+  useEffect(() => {
+    const getAllCategory = async () => {
+      try {
+        const res = await axios.get('/api/category');
+        setCategorys(res.data.category);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getAllCategory();
+  }, []);
 
   return (
     <section className="section" id="category">
@@ -11,50 +28,25 @@ export default function Category() {
         <p className="section__sub">בחרו את הסגנון שמתאים לבית שלכם</p>
       </div>
 
-      <div className="catGrid">
-        {[
-          {
-            key: 'olive',
-            title: 'מזוזות',
-            sub: 'קלאסי וחם',
-            img: './mezozacategory.png',
-            tone: 'gold',
-            query: 'עץ זית',
-          },
-          {
-            key: 'resin',
-            title: 'ברכות',
-            sub: 'מודרני ובולט',
-            img: './braca.png',
-            tone: 'navy',
-            query: 'שרף',
-          },
-          {
-            key: 'gift',
-            title: 'טליות',
-            img: './talit.jpg',
-            sub: 'לכניסה חדשה',
-            tone: 'paper',
-            query: 'מתנה',
-          },
-        ].map((c) => (
+      <div
+        style={{ gridTemplateColumns: `repeat(${categorys.length}, 1fr)` }}
+        className="catGrid"
+      >
+        {categorys.map((c, i) => (
           <button
             style={{
-              backgroundImage: `url(${c.img})`,
+              backgroundImage: `url(${c.image})`,
               backgroundSize: 'cover',
             }}
-            key={c.key}
+            key={c._id}
             type="button"
-            className={`catCard catCard--${c.tone}`}
-            onClick={() =>
-              navigate(`/search?category=${encodeURIComponent(c.query)}`)
-            }
+            className={`catCard catCard--${cssOptions[i]}`}
+            onClick={() => navigate(`/category/${encodeURIComponent(c._id)}`)}
           >
             <div>
               <div className="catCard__top">
                 <div>
                   <div className="catCard__title">{c.title}</div>
-                  <div className="catCard__sub">{c.sub}</div>
                 </div>
 
                 <span className="catCard__pill">לצפייה</span>

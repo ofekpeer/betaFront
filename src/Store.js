@@ -6,7 +6,7 @@ export const Store = createContext();
 const cheackLocalStorage = async (key, defaultValue) => {
   const storedValue = localStorage.getItem(key);
   if (storedValue) {
-    try {
+    try { //'http://localhost:5000/api/orders/checkCart'
       const checkCart = await axios.post('https://betabackend-17nq.onrender.com/api/orders/checkCart', {
         cartItems: JSON.parse(storedValue),
       });
