@@ -35,6 +35,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const getProducts = async () => {
+      console.log(window.innerHeight)
       dispatch({ type: 'GET REQUEST' });
       try {
         const res = await axios.get('/api/products');
@@ -60,7 +61,9 @@ export default function HomePage() {
       <NavBar />
 
       {/* Hero */}
-      <section className="hero">
+      <section style={{
+        height: window.innerHeight
+      }} className="hero">
         <div
           className="hero__bg"
           // style={{
@@ -87,7 +90,7 @@ export default function HomePage() {
             objectFit: 'cover',
             pointerEvents: 'none', // מבטל אינטראקציה (כמו GIF)
             display: 'block', // מוודא שהאלמנט תופס מקום
-            position: 'fixed',
+            position: 'absolute',
             display: 'flex',
           }}
         >
