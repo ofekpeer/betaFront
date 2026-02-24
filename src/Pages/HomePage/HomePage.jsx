@@ -87,7 +87,7 @@ export default function HomePage() {
             objectFit: 'cover',
             pointerEvents: 'none', // מבטל אינטראקציה (כמו GIF)
             display: 'block', // מוודא שהאלמנט תופס מקום
-            position: 'absolute',
+            position: 'fixed',
             display: 'flex',
           }}
         >
