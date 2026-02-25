@@ -6,6 +6,7 @@ import { Store } from '../../Store';
 import axios from 'axios';
 import Laoding from '../../components/Loading/Loading';
 import Footer from '../../components/footer/Footer';
+import FloatingProducts from '../../components/floatingProducts/FloatingProducts';
 
 export default function ProductPage() {
   const { name } = useParams();
@@ -273,7 +274,7 @@ export default function ProductPage() {
             </aside>
 
             <section>
-              <img className='gif' src="/video.gif" alt="video gif" />
+              <FloatingProducts></FloatingProducts>
             </section>
           </div>
 

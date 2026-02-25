@@ -1,0 +1,37 @@
+.bCard3D {
+  position: absolute;
+  inset: 16%;
+  border-radius: 24px;
+  border: 1px solid rgba(20, 26, 34, 0.1);
+  box-shadow: var(--shadow2);
+  background:
+    radial-gradient(
+      520px 360px at 30% 20%,
+      rgba(198, 161, 90, 0.22),
+      transparent 62%
+    ),
+    linear-gradient(180deg, rgba(20, 26, 34, 0.1), rgba(255, 255, 255, 0));
+  transform-style: preserve-3d;
+  animation: floaty 5.8s ease-in-out infinite;
+  background-size: cover;
+}
+
+
+.bCard3D--1 {
+  inset: 16%;
+  transform: translate(20px, -4px) rotate(3deg);
+  animation-delay: -2.2s;
+  background-image: url("https://i.pinimg.com/1200x/22/83/4b/22834b92cffb4f9c0d86af55c2f0230b.jpg");
+}
+.bCard3D--2 {
+  inset: 18%;
+  transform: translate(10px, -2px) rotate(2deg);
+  animation-delay: -2.2s;
+  background-image: url('https://i.pinimg.com/1200x/ee/9c/d6/ee9cd65074bfb1f8ad6aec6c6858f259.jpg');
+}
+.bCard3D--3 {
+  inset: 20%;
+  transform: translate(-10px, -10px) rotate(-1deg);
+  animation-delay: -2.2s;
+  background-image: url('https://i.pinimg.com/originals/2a/10/96/2a10969dd6775d921811d287c540ed92.png');
+}
