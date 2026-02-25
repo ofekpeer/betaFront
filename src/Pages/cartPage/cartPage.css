@@ -389,7 +389,7 @@
   background: rgba(20, 26, 34, 0.04);
   border: 1px solid rgba(20, 26, 34, 0.08);
   color: var(--cp-muted);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -452,7 +452,6 @@
 }
 
 .bold {
-  font-weight: bold;
-  font-size: 15px;
+  font-size: 17px;
   margin-bottom: 2px;
 }

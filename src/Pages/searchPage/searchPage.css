@@ -144,7 +144,6 @@
 }
 .spLabel {
   font-size: 12px;
-  font-weight: 1000;
   color: rgba(20, 26, 34, 0.8);
 }
 
@@ -205,11 +204,9 @@
   cursor: pointer;
   border-radius: 16px;
   padding: 12px 14px;
-  font-weight: 1100;
   transition: 160ms ease;
   user-select: none;
   white-space: nowrap;
-  font-weight: bold;
 }
 .spBtn--gold {
   background: linear-gradient(

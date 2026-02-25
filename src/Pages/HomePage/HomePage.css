@@ -112,9 +112,9 @@ body {
 }
 .hero__eyebrow {
   margin: 0 0 10px;
-  color: rgb(29 28 27);;
-  font-weight: bold;
+  color: rgb(29 28 27);
   letter-spacing: 0.5px;
+  font-size: 20px;
 }
 .hero__title {
   margin: 0 0 10px;
@@ -131,8 +131,7 @@ body {
   margin: 0 0 18px;
   color: var(--ink);
   line-height: 1.6;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 16px;
 }
 
 .hero__ctaRow {
@@ -347,7 +346,7 @@ body {
 }
 .card__title {
   margin: 0 0 8px;
-  font-size: 16px;
+  font-size: 22px;
 }
 .priceRow {
   display: flex;
@@ -394,11 +393,12 @@ body {
 .stripItem__title {
   margin-top: 8px;
   font-weight: 900;
+  font-size: 20px;
 }
 .stripItem__text {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -715,3 +715,4 @@ body {
     display: none;
   }
 }
+

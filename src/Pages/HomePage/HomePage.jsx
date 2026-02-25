@@ -97,12 +97,12 @@ export default function HomePage() {
         </video> */}
         <div className="hero__inner">
           <div className="hero__content">
-            <p className="hero__eyebrow">קולקציית פרימיום</p>
-            <h1 className="hero__title">
+            <p className="hero__eyebrow ">קולקציית פרימיום</p>
+            <h1 className="hero__title ">
               מזוזות בעיצוב
-              <span className="hero__titleAccent"> עץ זית</span> ושרף
+              <span className="hero__titleAccent "> עץ זית</span> ושרף
             </h1>
-            <p className="hero__sub">
+            <p className="hero__sub ">
               עבודת יד, גימור יוקרתי, שילוב עץ טבעי עם צבעי שרף עמוקים. מתנה
               מושלמת לבית חדש.
             </p>
