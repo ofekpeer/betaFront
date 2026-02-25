@@ -75,7 +75,7 @@ export default function HomePage() {
         {/* <img className="hero-beata" src="/beata.png" alt="Beata" /> */}
 
         <div className="hero__overlay" />
-        <video
+        {/* <video
           autoPlay // הפעלה אוטומטית
           loop // לולאה אינסופית
           muted // חובה! בלי זה ה-autoPlay ייחסם
@@ -94,7 +94,7 @@ export default function HomePage() {
         >
           <source src={'/vid.mp4'} type="video/mp4" />
           הדפדפן שלך לא תומך בוידאו.
-        </video>
+        </video> */}
         <div className="hero__inner">
           <div className="hero__content">
             <p className="hero__eyebrow">קולקציית פרימיום</p>
