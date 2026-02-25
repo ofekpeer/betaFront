@@ -191,8 +191,6 @@ export default function WelcomePopup({
             ) : (
               ''
             )}
-
-            <div className="wpFine">(בקנייה מעל 99 ש״ח)</div>
           </form>
         </div>
       </div>

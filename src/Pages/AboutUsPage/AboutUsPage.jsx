@@ -1,7 +1,24 @@
-import "./AboutUsPage.css";
-import NavBar from "../../components/NavBar/NavBar";
+import './AboutUsPage.css';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/footer/Footer';
+import { useEffect, useState } from 'react';
 
 export default function AboutUsPage() {
+  const [topCard, setTopCard] = useState(0); // לא -1
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setTopCard((prev) => (prev + 1) % 3);
+    }, 2500);
+    return () => clearInterval(t);
+  }, []);
+  
+  const cardStyle = (i) => ({
+    opacity: topCard === i ? 1 : 0.35,      // 👈 רואים מאחור
+    transition:  'opacity 0.3s ease-in-out',
+    zIndex: topCard === i ? 10 : 1,
+  });
+
   return (
     <div className="aboutV3 lp" dir="rtl">
       <NavBar />
@@ -15,22 +32,22 @@ export default function AboutUsPage() {
           <div className="bHero__copy">
             <div className="bKicker">
               <span className="bDot" />
-              ביתא • עץ זית • שרף • עבודת יד
+              ביתא • עץ זית • אבן • עבודת יד
             </div>
 
             <h1 className="bH1">
               יוקרה שקטה
-              <span className="bH1__sub"> לכניסה לבית</span>
+              <span className="bH1__sub">לבית שלך</span>
             </h1>
 
             <p className="bLead">
-              אנחנו לא מנסים “לצעוק”. אנחנו בונים מוצר שמרגיש פרימיום: קצוות נקיים,
-              צבע עמוק, וטקסטורה טבעית של עץ זית — כל יום מחדש.
+              אנחנו לא מנסים “לצעוק”. אנחנו בונים מוצר שמרגיש פרימיום: קצוות
+              נקיים, צבע עמוק, וטקסטורה טבעית של עץ זית — כל יום מחדש.
             </p>
 
             <div className="bHero__row">
               <a className="btn btn--gold" href="/#products">
-                לקולקציה
+                לקולקציות
               </a>
               <a className="btn btn--ghost" href="/#about">
                 מה מיוחד אצלנו?
@@ -56,11 +73,12 @@ export default function AboutUsPage() {
           {/* Floating product stack (no images needed) */}
           <div className="bHero__art" aria-hidden="true">
             <div className="bStack">
-              <div className="bCard3D bCard3D--1" />
-              <div className="bCard3D bCard3D--2" />
-              <div className="bCard3D bCard3D--3" />
+              <div className="bCard3D bCard3D--1" style={cardStyle(0)} />
+              <div className="bCard3D bCard3D--2" style={cardStyle(1)} />
+              <div className="bCard3D bCard3D--3" style={cardStyle(2)} />
+
               <div className="bStamp">
-                <div className="bStamp__top">BEITA</div>
+                <div className="bStamp__top">BETA</div>
                 <div className="bStamp__sub">HANDMADE</div>
               </div>
             </div>
@@ -75,8 +93,8 @@ export default function AboutUsPage() {
             <div className="bPromise__left">
               <h2 className="bTitle">ההתחייבות שלנו</h2>
               <p className="bText">
-                מוצר יפה זה טוב. מוצר שמרגיש פרימיום — זה מה שאנחנו בונים. לכן אנחנו
-                עובדים בשכבות: חומר, צבע, ליטוש, הגנה.
+                מוצר יפה זה טוב. מוצר שמרגיש פרימיום — זה מה שאנחנו בונים. לכן
+                אנחנו עובדים בשכבות: חומר, צבע, ליטוש, הגנה.
               </p>
 
               <div className="bChecks">
@@ -91,7 +109,7 @@ export default function AboutUsPage() {
               <div className="bQuote">
                 <div className="bQuote__mark">“</div>
                 <div className="bQuote__text">
-                  הפרטים הקטנים הם אלה שגורמים למוצר להיראות יקר — גם בלי לוגו גדול.
+                  הפרטים הקטנים הם אלה שגורמים למוצר להיראות יקר.
                 </div>
                 <div className="bQuote__by">— ביתא</div>
               </div>
@@ -180,10 +198,7 @@ export default function AboutUsPage() {
           </div>
         </section>
       </main>
-
-      <a className="bFloat" href="/#products">
-        🛍️ קנייה
-      </a>
+      <Footer></Footer>
     </div>
   );
 }
