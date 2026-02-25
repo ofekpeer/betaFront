@@ -7,7 +7,7 @@ export default function Category() {
   const navigate = useNavigate();
   const [categorys, setCategorys] = useState([]);
 
-  const cssOptions = ['gold', 'navy', 'paper'];
+  const cssOptions = [ 'navy', 'navy', 'navy'];
   useEffect(() => {
     const getAllCategory = async () => {
       try {
