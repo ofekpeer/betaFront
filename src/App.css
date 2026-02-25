@@ -3,7 +3,7 @@
 }
 
 * {
-  font-family: 'Noto Serif Hebrew', serif;
+  font-family: 'Assistant', sans-serif;
   font-weight: 900;
   font-style: normal;
 }
@@ -43,12 +43,10 @@
   }
 }
 
-
 /* ===== A11Y GLOBAL SETTINGS ===== */
 html {
   --a11y-font-scale: 1;
 }
-
 
 /* Apply font scaling to the whole app */
 body {
