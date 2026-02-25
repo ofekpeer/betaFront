@@ -90,6 +90,8 @@ body {
       rgba(198, 161, 90, 0.18),
       transparent 55%
     );
+      background-image: url("../../../public/aboutPage.jpg");
+
 }
 .hero__inner {
   position: relative;
@@ -100,7 +102,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../../../public/aboutPage.jpg");
 }
 .hero__content {
   /* max-width: 560px;
@@ -445,6 +446,8 @@ body {
         rgba(198, 161, 90, 0.18),
         transparent 55%
       );
+        background-image: url("../../../public/aboutPage.jpg");
+
   }
   .hero__inner {
     min-height: 640px;
