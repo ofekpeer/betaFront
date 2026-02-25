@@ -90,8 +90,7 @@ body {
       rgba(198, 161, 90, 0.18),
       transparent 55%
     );
-      background-image: url("../../../public/aboutPage.jpg");
-
+  background-image: url('../../../public/aboutPage.jpg');
 }
 .hero__inner {
   position: relative;
@@ -113,24 +112,24 @@ body {
 }
 .hero__eyebrow {
   margin: 0 0 10px;
-  color: var(--bg);
+  color: rgb(29 28 27);;
   font-weight: bold;
   letter-spacing: 0.5px;
-  
 }
 .hero__title {
   margin: 0 0 10px;
   font-size: 46px;
   line-height: 1.08;
   letter-spacing: -0.5px;
+  color: var(--bg);
 }
 .hero__titleAccent {
-  color: #0f141b;
+  color: rgb(29 28 27);
   position: relative;
 }
 .hero__sub {
   margin: 0 0 18px;
-  color: var(--bg);
+  color: var(--ink);
   line-height: 1.6;
   font-size: 15px;
   font-weight: bold;
@@ -446,8 +445,7 @@ body {
         rgba(198, 161, 90, 0.18),
         transparent 55%
       );
-        background-image: url("../../../public/aboutPage.jpg");
-
+    background-image: url('../../../public/aboutPage.jpg');
   }
   .hero__inner {
     min-height: 640px;
@@ -684,6 +682,7 @@ body {
     font-size: 44px;
     line-height: 1.08;
     letter-spacing: -0.5px;
+    color: var(--bg);
   }
 }
 
