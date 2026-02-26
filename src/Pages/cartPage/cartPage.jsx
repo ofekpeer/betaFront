@@ -9,26 +9,23 @@ import Laoding from '../../components/Loading/Loading';
 export default function CartPage() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { items },
+    cart: { items, couponCN },
   } = state;
-  const [registerCoupon, setRegisterCoupon] = useState(
-    sessionStorage.getItem('register'),
-  );
+
   const [products, setProducts] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
-    const [pageLoading, setPageLoading] = useState(true);
-
+  const [pageLoading, setPageLoading] = useState(true);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await axios.get('/api/products');
         setProducts(res.data.products);
-        setRecommendations(res.data.products.slice(0, 2)); // דוגמה: בוחר את 4 המוצרים הראשונים כהמלצות
+        setRecommendations(res.data.products.slice(0, 3)); // דוגמה: בוחר את 4 המוצרים הראשונים כהמלצות
       } catch (error) {}
     };
     getProducts();
-        const timeout = () =>
+    const timeout = () =>
       setTimeout(() => {
         setPageLoading(false);
       }, 1000);
@@ -36,7 +33,7 @@ export default function CartPage() {
     return clearTimeout(timeout);
   }, []);
 
-  const [coupon, setCoupon] = useState('');
+  const [coupon, setCoupon] = useState({ name: '', discount: 0 });
   const [couponMsg, setCouponMsg] = useState(null); // {type:'ok'|'err', text:''}
 
   // “אולי תאהב גם”
@@ -45,21 +42,21 @@ export default function CartPage() {
   const shippingBase = 29;
 
   const subtotal = useMemo(
-    () => items.reduce((sum, it) => sum + it.price * it.quantity, 0),
+    () => items?.reduce((sum, it) => sum + it.price * it.quantity, 0),
     [items],
   );
 
   const discount = useMemo(() => {
     // קופון דמה: GOLD10 נותן 10% על subtotal
-    if (coupon.trim().toUpperCase() === 'GOLD10' || registerCoupon === 'GOLD10')
-      return Math.round(subtotal * 0.1);
+    if (couponCN )
+      return Math.round(subtotal * (couponCN.discount/100));
     return 0;
-  }, [coupon, subtotal]);
+  }, [couponCN, subtotal]);
 
   const shipping = useMemo(() => {
-    if (items.length === 0) return 0;
+    if (items?.length === 0) return 0;
     return subtotal - discount >= FREE_SHIP_FROM ? 0 : shippingBase;
-  }, [items.length, subtotal, discount]);
+  }, [items?.length, subtotal, discount]);
 
   const total = useMemo(
     () => Math.max(0, subtotal - discount + shipping),
@@ -68,15 +65,16 @@ export default function CartPage() {
 
   const missingForFreeShip = useMemo(() => {
     const effective = subtotal - discount;
-    return Math.max(0, FREE_SHIP_FROM - effective).toFixed(2);
+    return Math.max(0, FREE_SHIP_FROM - effective)?.toFixed(2);
   }, [subtotal, discount]);
 
   const clampQty = (n) => Math.max(1, Math.min(99, n));
 
   const inc = (i) => {
     const item = items.find(
-      (it) => it.id === i.id && it.size === i.size && it.style === i.style,
+      (it) => it._id === i._id && it.style === i.style && it.size === i.size,
     );
+
     ctxDispatch({
       type: 'ADD TO CART',
       payload: {
@@ -91,7 +89,8 @@ export default function CartPage() {
       type: 'ADD TO CART',
       payload: {
         ...items.find(
-          (it) => it.id === i.id && it.size === i.size && it.style === i.style,
+          (it) =>
+            it._id === i._id && it.style === i.style && it.size === i.size,
         ),
         quantity: Number(-1),
       },
@@ -103,36 +102,37 @@ export default function CartPage() {
       payload: id,
     });
 
-  const applyCoupon = () => {
-    const code = coupon.trim().toUpperCase();
+  const applyCoupon = async () => {
+    const code = coupon?.name.trim().toUpperCase();
     if (!code) {
       setCouponMsg({ type: 'err', text: 'רשום קוד קופון כדי להפעיל.' });
       return;
     }
-    if (code === 'GOLD10') {
-      setCouponMsg({ type: 'ok', text: 'קופון הופעל ✅ חסכת 10%.' });
-    } else {
+    try {
+      const res = await axios.post('/api/coupon/checkCoupon', coupon);
+      console.log(res.data);
+      if (res.data) {
+        console.log(res.data)
+        ctxDispatch({
+          type: 'ADD COUPON',
+          payload: res.data,
+        });
+        setCouponMsg({ type: 'ok', text: 'קופון הופעל ✅ חסכת 10%.' });
+      } else {
+        setCouponMsg({ type: 'err', text: 'הקופון לא תקף / לא קיים.' });
+      }
+    } catch {
       setCouponMsg({ type: 'err', text: 'הקופון לא תקף / לא קיים.' });
     }
-  };
-
-  const addRecToCart = (p) => {
-    ctxDispatch({
-      type: 'ADD TO CART',
-      payload: {
-        ...p,
-        size: p.options.size[0],
-        style: p.options.style[0],
-      },
-    });
   };
 
   const goCheckout = () => {
     alert(`Checkout (דמו) ✅\nסכום לתשלום: ₪${total}`);
   };
 
-  return (
-    pageLoading ? <Laoding></Laoding> :
+  return pageLoading ? (
+    <Laoding></Laoding>
+  ) : (
     <div className="cp">
       <NavBar />
       <div className="cp__inner">
@@ -140,8 +140,8 @@ export default function CartPage() {
           <div>
             <h1 className="cpHead__title">העגלה שלך</h1>
             <p className="cpHead__sub">
-              {items.length
-                ? `יש לך ${items.length} פריטים בעגלה.`
+              {items?.length
+                ? `יש לך ${items?.length} פריטים בעגלה.`
                 : 'העגלה ריקה כרגע — בוא נמצא לך משהו יוקרתי 😄'}
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function CartPage() {
         </header>
 
         {/* Progress / Free shipping */}
-        {items.length > 0 && (
+        {items?.length > 0 && (
           <section className="cpProgress" aria-label="Free shipping progress">
             {Number(missingForFreeShip) === 0 ? (
               <div className="cpProgress__text">🚚 זכית במשלוח חינם!</div>
@@ -176,7 +176,7 @@ export default function CartPage() {
         <div className="cpGrid">
           {/* Items */}
           <section className="cpItems" aria-label="Cart items">
-            {items.length === 0 ? (
+            {items?.length === 0 ? (
               <div className="cpEmpty">
                 <div className="cpEmpty__icon">🛍️</div>
                 <div className="cpEmpty__title">העגלה ריקה</div>
@@ -189,8 +189,8 @@ export default function CartPage() {
               </div>
             ) : (
               <>
-                {items.map((it) => (
-                  <article key={it.id} className="cpItem">
+                {items?.map((it) => (
+                  <article key={it._id + it.size + it.style} className="cpItem">
                     <a
                       className="cpItem__imgWrap"
                       href={`/product/${it.name}`}
@@ -244,7 +244,9 @@ export default function CartPage() {
                               );
                               ctxDispatch((prev) =>
                                 prev.map((x) =>
-                                  x.id === it.id
+                                  x._id === it._id &&
+                                  x.style === it.style &&
+                                  x.size === it.size
                                     ? {
                                         ...x,
                                         quantity: clampQty(
@@ -293,8 +295,8 @@ export default function CartPage() {
                   <div className="cpCoupon__row">
                     <input
                       className="cpInput"
-                      value={coupon}
-                      onChange={(e) => setCoupon(e.target.value)}
+                      value={coupon.name}
+                      onChange={(e) => setCoupon({ name: e.target.value })}
                       placeholder="לדוגמה: BETA10"
                       aria-label="קוד קופון"
                     />
@@ -352,7 +354,7 @@ export default function CartPage() {
                 className="cpBtn cpBtn--gold cpBtn--full bold"
                 type="button"
                 onClick={goCheckout}
-                disabled={items.length === 0}
+                disabled={items?.length === 0}
               >
                 מעבר לתשלום
               </button>

@@ -47,12 +47,12 @@ export default function ProductCard({ product }) {
           <span className="price">{product.price}₪</span>
         </div>
 
-        <button
+        <button disabled={!product.inStock} 
           ref={addToCartBtn}
           onClick={() => {
             handelAddToCart();
           }}
-          className="btn btn--dark btn--full"
+          className={product.inStock ? "btn btn--dark btn--full" : "btn btn--gray btn--full"}
         >
           הוסף לעגלה
         </button>

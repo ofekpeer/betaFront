@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import './WelcomePopup.css';
 import axios from 'axios';
+import { Store } from '../../Store';
 
 function pad2(n) {
   return String(n).padStart(2, '0');
@@ -8,9 +9,11 @@ function pad2(n) {
 
 export default function WelcomePopup({
   storageKey = 'beita_welcome_popup_v2',
+
   // כמה זמן יש למבצע (בדקות) מרגע פתיחה ראשונה (באותו סשן)
   minutes = 10,
 }) {
+  const { dispatch: ctxDispatch } = useContext(Store);
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -52,7 +55,7 @@ export default function WelcomePopup({
       setSecondsLeft(left);
       if (left === 0) {
         // אפשר לסגור אוטומטית או להשאיר
-         setOpen(false);
+        setOpen(false);
       }
     };
 
@@ -102,7 +105,10 @@ export default function WelcomePopup({
       console.log(res);
       if (res.status === 200) {
         setValid(true);
-        sessionStorage.setItem('register', res.data);
+        ctxDispatch({
+          type: 'ADD COUPON',
+          payload: {name: res.data, discount: 10},
+        });
         close(true);
       }
     } catch (err) {
@@ -112,7 +118,7 @@ export default function WelcomePopup({
         setValid(true);
       }, 2000);
       return () => clearTimeout(timer);
-    } 
+    }
   };
 
   if (!open) return null;

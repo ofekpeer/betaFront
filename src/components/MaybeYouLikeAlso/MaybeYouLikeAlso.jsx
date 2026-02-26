@@ -31,7 +31,7 @@ export default function Footer({ recommendations }) {
         {recommendations.map((p) => (
           <div
             onClick={() => handelGoToProduct(p)}
-            key={p.id}
+            key={p._id}
             className="cpRec"
           >
             <div className="cpRec__imgWrap">

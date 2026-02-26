@@ -217,6 +217,16 @@ body {
   width: 100%;
 }
 
+.btn--gray {
+  background: linear-gradient(
+    180deg,
+    rgb(190 190 190 / 96%),
+    rgb(114 114 114 / 96%)
+  );
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* Main */
 .main {
   position: relative;
@@ -715,4 +725,3 @@ body {
     display: none;
   }
 }
-

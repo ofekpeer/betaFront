@@ -60,7 +60,7 @@ export default function NavBar() {
             alt="Logo"
           />
           <div className="lp-brand__text">
-            <div className="lp-brand__name">מזוזות בשיר</div>
+            <div className="lp-brand__name">ביתא</div>
             <div className="lp-brand__tag">בעבודת יד • עץ זית • שרף</div>
           </div>
         </div>
@@ -166,14 +166,6 @@ export default function NavBar() {
           >
             דברו איתנו
           </a>
-          <a
-            className="mobileMenu__link"
-            href="/#categorys"
-            onClick={() => setOptions(false)}
-          >
-            שאלות נפוצות
-          </a>
-
           <div className="mobileMenu__divider" />
 
           <a

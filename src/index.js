@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './Store';
 import axios from 'axios';
 
-axios.defaults.baseURL = "https://betabackend-17nq.onrender.com" 
-//"http://localhost:5000/"
+axios.defaults.baseURL = "http://localhost:5000/" 
+//"http://localhost:5000/" https://betabackend-17nq.onrender.com
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StoreProvider>

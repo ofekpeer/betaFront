@@ -35,7 +35,7 @@ export default function AboutUsPage() {
               <a className="btn btn--gold" href="/#products">
                 לקולקציות
               </a>
-              <a className="btn btn--ghost" href="/#about">
+              <a className="btn btn--ghost" href="/about/#about">
                 מה מיוחד אצלנו?
               </a>
             </div>
@@ -76,7 +76,7 @@ export default function AboutUsPage() {
                 <div className="bCheck">✓ קצוות נקיים ודיוק בגימור</div>
                 <div className="bCheck">✓ צבע עמוק בלי רעש</div>
                 <div className="bCheck">✓ חומרים איכותיים + הגנה</div>
-                <div className="bCheck">✓ אריזה שמרגישה מתנה</div>
+                <div className="bCheck">✓ אריזה יוקרתית</div>
               </div>
             </div>
 
@@ -84,7 +84,7 @@ export default function AboutUsPage() {
               <div className="bQuote">
                 <div className="bQuote__mark">“</div>
                 <div className="bQuote__text">
-                  הפרטים הקטנים הם אלה שגורמים למוצר להיראות יקר.
+                  הפרטים הקטנים הם אלה שגורמים למוצר להיות יוקרתי.
                 </div>
                 <div className="bQuote__by">— ביתא</div>
               </div>
@@ -96,7 +96,7 @@ export default function AboutUsPage() {
         <section className="bSection">
           <div className="bHead">
             <h2 className="bTitle">מה ההבדל בפועל?</h2>
-            <p className="bSub">שני כרטיסים שמסבירים למה זה נראה “פרימיום”.</p>
+            <p className="bSub"></p>
           </div>
 
           <div className="bBA">
@@ -104,8 +104,8 @@ export default function AboutUsPage() {
               <div className="bBA__tag">לפני</div>
               <h3 className="bBA__t">רגיל</h3>
               <ul className="bBA__list">
-                <li>גימור “בסדר” מרחוק</li>
-                <li>קצוות לא תמיד חדים</li>
+                <li>גימור חלש</li>
+                <li>קצוות חדים</li>
                 <li>צבע שטוח/צועק</li>
               </ul>
             </div>
@@ -114,7 +114,7 @@ export default function AboutUsPage() {
               <div className="bBA__tag bBA__tag--after">אחרי</div>
               <h3 className="bBA__t">ביתא</h3>
               <ul className="bBA__list">
-                <li>נראה יקר גם מקרוב</li>
+                <li>גימור מיוחד</li>
                 <li>קצוות נקיים + ליטוש</li>
                 <li>עומק צבע מאוזן</li>
               </ul>
@@ -126,7 +126,7 @@ export default function AboutUsPage() {
         <section className="bSection">
           <div className="bHead">
             <h2 className="bTitle">תהליך קצר</h2>
-            <p className="bSub">בלי חפירות — רק מה שחשוב.</p>
+            <p className="bSub">איך אנחנו יוצרים את המוצרים שלנו</p>
           </div>
 
           <div className="bProcess">
@@ -165,7 +165,7 @@ export default function AboutUsPage() {
                 <a className="btn btn--gold" href="/#products">
                   לקולקציה
                 </a>
-                <a className="btn btn--dark" href="/#products">
+                <a className="btn btn--dark" href="/cart">
                   קנייה עכשיו
                 </a>
               </div>

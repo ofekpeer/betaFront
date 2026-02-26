@@ -35,7 +35,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const getProducts = async () => {
-      console.log(window.innerHeight)
+      console.log(window.innerHeight);
       dispatch({ type: 'GET REQUEST' });
       try {
         const res = await axios.get('/api/products');
@@ -62,39 +62,8 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="hero">
-        <div
-          className="hero__bg"
-          // style={{
-          //   '--hero-desktop': `url("/background.png")`,
-          //   '--hero-mobile': `url("/background-mobile.jpeg")`,
-          //   '--hero-iped': `url("/background-mobile.jpeg")`,
-          // }}
-        />
-
-        {/* beata מעל הרקע */}
-        {/* <img className="hero-beata" src="/beata.png" alt="Beata" /> */}
-
+        <div className="hero__bg" />
         <div className="hero__overlay" />
-        {/* <video
-          autoPlay // הפעלה אוטומטית
-          loop // לולאה אינסופית
-          muted // חובה! בלי זה ה-autoPlay ייחסם
-          playsInline // מונע קפיצה למסך מלא באייפון
-          webkit-playsinline="true"
-          preload="auto" // טעינה מראש של הסרטון
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            pointerEvents: 'none', // מבטל אינטראקציה (כמו GIF)
-            display: 'block', // מוודא שהאלמנט תופס מקום
-            position: 'absolute',
-            display: 'flex',
-          }}
-        >
-          <source src={'/vid.mp4'} type="video/mp4" />
-          הדפדפן שלך לא תומך בוידאו.
-        </video> */}
         <div className="hero__inner">
           <div className="hero__content">
             <p className="hero__eyebrow ">קולקציית פרימיום</p>
@@ -115,27 +84,6 @@ export default function HomePage() {
                 למה אנחנו?
               </a>
             </div>
-
-            {/* <div className="hero__badges">
-              <div className="badge">
-                <span style={{ paddingTop: '4px' }} className="badge__icon">
-                  <img src="/icons/delivery.svg" alt="Gift Box" />
-                </span>
-                משלוח מהיר
-              </div>
-              <div className="badge">
-                <span className="badge__icon">
-                  <img src="/icons/lock.svg" alt="Gift Box" />
-                </span>
-                תשלום מאובטח
-              </div>
-              <div className="badge">
-                <span className="badge__icon">
-                  <img src="/icons/hand.svg" alt="Gift Box" />
-                </span>
-                עבודת יד
-              </div>
-            </div> */}
           </div>
         </div>
       </section>

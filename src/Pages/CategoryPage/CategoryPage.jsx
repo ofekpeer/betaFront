@@ -5,6 +5,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import './CategoryPage.css';
 import { getError } from '../../utils';
+import Footer from '../../components/footer/Footer';
 
 // English comments ✅
 const reducer = (state, action) => {
@@ -109,6 +110,7 @@ export default function CategoryPage() {
           </section>
         )}
       </main>
+      <Footer></Footer>
     </div>
   );
 }
