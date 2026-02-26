@@ -117,7 +117,7 @@ export default function CartPage() {
           type: 'ADD COUPON',
           payload: res.data,
         });
-        setCouponMsg({ type: 'ok', text: 'קופון הופעל ✅ חסכת 10%.' });
+        setCouponMsg({ type: 'ok', text: `קופון הופעל חסכת ${couponCN.discount}% ✅` });
       } else {
         setCouponMsg({ type: 'err', text: 'הקופון לא תקף / לא קיים.' });
       }
