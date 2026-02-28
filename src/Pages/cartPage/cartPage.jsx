@@ -5,6 +5,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import axios from 'axios';
 import MaybeYouLikeAlso from '../../components/MaybeYouLikeAlso/MaybeYouLikeAlso';
 import Laoding from '../../components/Loading/Loading';
+import Footer from '../../components/footer/Footer';
 
 export default function CartPage() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -375,6 +376,7 @@ export default function CartPage() {
           </aside>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

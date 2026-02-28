@@ -10,6 +10,8 @@ import SearchPage from './Pages/searchPage/searchPage';
 import WelcomePopup from './components/WelcomePopup/WelcomePopup';
 import AboutUsPage from './Pages/AboutUsPage/AboutUsPage';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
+import PolicyPage from './Pages/PolicyPage/PolicyPage';
+import ShippingReturnsPage from './Pages/ShippingReturnsPage/ShippingReturnsPage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/category/:_id" element={<CategoryPage />} />
+          <Route path="/policy" element={<PolicyPage />} />
+          <Route path="/shipping-returns" element={<ShippingReturnsPage />} />
         </Routes>
       </BrowserRouter>
       <WelcomePopup></WelcomePopup>

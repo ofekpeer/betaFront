@@ -142,6 +142,13 @@ export default function NavBar() {
         />
 
         <div className={`mobileMenu ${options ? 'isOpen' : ''}`} role="menu">
+          <a
+            className="mobileMenu__link"
+            href="/"
+            onClick={() => setOptions(false)}
+          >
+            דף הבית
+          </a>
           {categorys.map((i) => (
             <a
               key={i._id}

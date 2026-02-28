@@ -13,8 +13,8 @@ export default function Footer() {
           © {new Date().getFullYear()} ביתא • כל הזכויות שמורות
         </div>
         <div className="footer__links">
-          <a href="#">תקנון</a>
-          <a href="#">מדיניות משלוחים</a>
+          <a href="/policy">תקנון</a>
+          <a href="/shipping-returns">מדיניות משלוחים</a>
           <a href={url}>צור קשר</a>
         </div>
       </div>
