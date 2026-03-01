@@ -11,7 +11,7 @@ const clampQty = (n) => Math.max(1, Math.min(99, n));
 export default function CheckoutPage() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { items },
+    cart: { items, couponCN },
   } = state;
 
   // ===== form state =====
@@ -33,6 +33,7 @@ export default function CheckoutPage() {
 
   const navigate = useNavigate();
   useEffect(() => {
+    console.log(couponCN.discount);
     if (!state.cart.items || state.cart.items.length === 0) {
       navigate('/cart');
     }
@@ -276,7 +277,7 @@ export default function CheckoutPage() {
                 onClick={() => setPaymentMethod('card')}
               >
                 <div className="ckChoice__t">כרטיס אשראי</div>
-                <div className="ckChoice__d">מאובטח</div>
+                <div className="ckChoice__d">מאובטח (לא זמין כעת)</div>
               </button>
 
               <button
@@ -293,8 +294,8 @@ export default function CheckoutPage() {
                 className={`ckChoice ${paymentMethod === 'cash' ? 'isActive' : ''}`}
                 onClick={() => setPaymentMethod('cash')}
               >
-                <div className="ckChoice__t">מזומן לשליח</div>
-                <div className="ckChoice__d">אם זמין</div>
+                <div className="ckChoice__t">להזמנה בוואטצפ</div>
+                <div className="ckChoice__d">נוח</div>
               </button>
             </div>
 
@@ -311,7 +312,7 @@ export default function CheckoutPage() {
 
             <div className="ckActions">
               <button className="ckBtn ckBtn--gold" type="submit">
-                ✅מעבר לשלום
+                ✅מעבר לתשלום
               </button>
               <a className="ckBtn ckBtn--dark" href="/cart">
                 ← חזרה לעגלה
@@ -422,11 +423,22 @@ export default function CheckoutPage() {
                     <b>{shipping === 0 ? 'חינם' : `₪${shipping}`}</b>
                   </div>
 
+                  <div className="ckRow green">
+                    <span>הנחה</span>
+                    <b>
+                      {couponCN.discount
+                        ? `₪${(subtotal * (couponCN.discount / 100)).toFixed(2)}`
+                        : `₪0`}
+                    </b>
+                  </div>
+
                   <div className="ckHr" />
 
                   <div className="ckTotal">
                     <span>סה״כ</span>
-                    <b>₪{total.toFixed(2)}</b>
+                    <b>
+                      ₪{(subtotal * (1 - couponCN.discount / 100)).toFixed(2)}
+                    </b>
                   </div>
 
                   {deliveryMethod === 'courier' &&

@@ -59,8 +59,8 @@ export default function CartPage() {
 
   const shipping = useMemo(() => {
     if (items?.length === 0) return 0;
-    return subtotal - discount >= FREE_SHIP_FROM ? 0 : shippingBase;
-  }, [items?.length, subtotal, discount]);
+    return subtotal >= FREE_SHIP_FROM ? 0 : shippingBase;
+  }, [items?.length, subtotal]);
 
   const total = useMemo(
     () => Math.max(0, subtotal - discount + shipping),
@@ -68,9 +68,9 @@ export default function CartPage() {
   );
 
   const missingForFreeShip = useMemo(() => {
-    const effective = subtotal - discount;
+    const effective = subtotal;
     return Math.max(0, FREE_SHIP_FROM - effective)?.toFixed(2);
-  }, [subtotal, discount]);
+  }, [subtotal]);
 
   const clampQty = (n) => Math.max(1, Math.min(99, n));
 
@@ -183,7 +183,7 @@ export default function CartPage() {
               <div
                 className="cpProgress__fill"
                 style={{
-                  width: `${Math.min(100, Math.round(((subtotal - discount) / FREE_SHIP_FROM) * 100))}%`,
+                  width: `${Math.min(100, Math.round((subtotal / FREE_SHIP_FROM) * 100))}%`,
                 }}
               />
             </div>
