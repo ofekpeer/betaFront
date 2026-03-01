@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 
 export default function Clarity() {
   useEffect(() => {
-    const projectId = 'vezaok77zg'; // <-- תחליף למה שקיבלת ב-Clarity
-
+    const projectId = 'vezaok77zg'; 
     // לא לטעון פעמיים
     if (window.clarity) return;
 

@@ -68,8 +68,8 @@ export default function NavBar() {
         {/* Desktop / Mobile Actions */}
         <div className="ooo">
           <div className="lp-actions">
-            <a className="lp-nav__link lp-nav__link--cta" href="#products">
-              לרכישה
+            <a className="lp-nav__link lp-nav__link--cta" href="/category/699cd1229ca1fe188a713f77">
+              מומלצים
             </a>
             <button
               onClick={() => navigate('/search')}

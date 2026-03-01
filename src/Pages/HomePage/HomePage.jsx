@@ -80,7 +80,7 @@ export default function HomePage() {
               <a className="btn btn--gold" href="#products">
                 לכל הקולקציה
               </a>
-              <a className="btn btn--ghost" href="#about">
+              <a className="btn btn--ghost" href="/about">
                 למה אנחנו?
               </a>
             </div>
@@ -152,20 +152,22 @@ export default function HomePage() {
 
           <div className="faq">
             <details className="faqItem">
-              <summary>האם המזוזה מגיעה עם קלף?</summary>
+              <summary>איך ניתן לעקוב אחרי המשלוח?</summary>
               <p>
-                ברירת מחדל: בית מזוזה בלבד. אפשר להוסיף קלף כשר בתוספת תשלום.
+                ניתן לשלוח הודעה במייל/בוואטצפ ולקבל עידכון מידי על מצב המשלוח{' '}
+                <br/>
+                מייל: betaelegant@gmai.com <br/> טלפון: 0507487234
               </p>
             </details>
 
             <details className="faqItem">
               <summary>כמה זמן לוקח משלוח?</summary>
-              <p>בדרך כלל 2–5 ימי עסקים (תלוי אזור).</p>
+              <p>2-5 ימי עסקים</p>
             </details>
 
             <details className="faqItem">
               <summary>אפשר התאמה אישית?</summary>
-              <p>כן—צבע שרף/גימור/חריטה לפי בקשה (בהתאם לזמינות).</p>
+              <p>כן—צבע/גימור/חריטה לפי בקשה (בהתאם לזמינות).</p>
             </details>
           </div>
         </section>

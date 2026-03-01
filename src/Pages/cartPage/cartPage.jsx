@@ -6,12 +6,15 @@ import axios from 'axios';
 import MaybeYouLikeAlso from '../../components/MaybeYouLikeAlso/MaybeYouLikeAlso';
 import Laoding from '../../components/Loading/Loading';
 import Footer from '../../components/footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 export default function CartPage() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     cart: { items, couponCN },
   } = state;
+
+  const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
@@ -39,8 +42,8 @@ export default function CartPage() {
 
   // “אולי תאהב גם”
 
-  const FREE_SHIP_FROM = 450; // סף משלוח חינם לדוגמה
-  const shippingBase = 29;
+  const FREE_SHIP_FROM = 250; // סף משלוח חינם לדוגמה
+  const shippingBase = 30;
 
   const subtotal = useMemo(
     () => items?.reduce((sum, it) => sum + it.price * it.quantity, 0),
@@ -127,8 +130,21 @@ export default function CartPage() {
     }
   };
 
-  const goCheckout = () => {
-    alert(`Checkout (דמו) ✅\nסכום לתשלום: ₪${total}`);
+  const goCheckout = async () => {
+    try{
+      //reduild befor checkout
+      const res = await axios.post('/api/orders/goToCheckOut', {state});
+        ctxDispatch({
+          type: 'REBUILD',
+          payload: res.data.items,
+        });
+        navigate("/checkout")
+    }
+    catch{
+
+    }
+
+    //navigate("/checkout") 
   };
 
   return pageLoading ? (

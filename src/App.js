@@ -12,6 +12,7 @@ import AboutUsPage from './Pages/AboutUsPage/AboutUsPage';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
 import PolicyPage from './Pages/PolicyPage/PolicyPage';
 import ShippingReturnsPage from './Pages/ShippingReturnsPage/ShippingReturnsPage';
+import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/category/:_id" element={<CategoryPage />} />
           <Route path="/policy" element={<PolicyPage />} />
           <Route path="/shipping-returns" element={<ShippingReturnsPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </BrowserRouter>
       <WelcomePopup></WelcomePopup>

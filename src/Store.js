@@ -3,7 +3,7 @@ import { createContext, useReducer } from 'react';
 
 export const Store = createContext();
 
-const API = 'https://betabackend-17nq.onrender.com/api/'; //'http://localhost:5000/api/orders/checkCart' 'https://betabackend-17nq.onrender.com/api/orders/checkCart'
+const API = 'http://localhost:5000/api/'; //'http://localhost:5000/api/orders/checkCart' 'https://betabackend-17nq.onrender.com/api/orders/checkCart'
 
 const cheackLocalStorage = async (key, defaultValue) => {
   const storedValue = localStorage.getItem(key);
@@ -12,9 +12,11 @@ const cheackLocalStorage = async (key, defaultValue) => {
       const checkCart = await axios.post(API + 'orders/checkCart', {
         cartItems: JSON.parse(storedValue),
       });
-      console.log(JSON.parse(storedValue));
       if (checkCart.data) {
-        return JSON.parse(storedValue);
+        const noNulls = checkCart.data.filter((item) => item !== null);
+        console.log(noNulls);
+        localStorage.setItem('order',JSON.stringify(noNulls));
+        return noNulls;
       } else {
         localStorage.setItem('order', []);
         return defaultValue;
@@ -32,16 +34,16 @@ const checkCoupon = async (key, defaultValue) => {
   const storedValue = localStorage.getItem(key);
   if (storedValue) {
     try {
-      const res = await axios.post( API +
-        'coupon/checkLocal',
+      const res = await axios.post(
+        API + 'coupon/checkLocal',
         JSON.parse(storedValue),
       );
-      console.log("RES" ,res)
-      console.log(" ccc" ,JSON.parse(storedValue));
+      console.log('RES', res);
+      console.log(' ccc', JSON.parse(storedValue));
       if (res.data) {
         return JSON.parse(storedValue);
       } else {
-        localStorage.setItem('couponCN', defaultValue);
+        localStorage.setItem('couponCN', JSON.stringify(defaultValue));
         return defaultValue;
       }
     } catch (error) {
@@ -115,9 +117,14 @@ const reducer = (state, action) => {
       return { ...state, cart: { ...state.cart, items: cartItems } };
     }
     case 'ADD COUPON': {
-      console.log("store" , action.payload)
+      console.log('store', action.payload);
       localStorage.setItem('couponCN', JSON.stringify(action.payload));
       return { ...state, cart: { ...state.cart, couponCN: action.payload } };
+    }
+    case 'REBUILD': {
+      console.log('store', action.payload);
+      localStorage.setItem('order', JSON.stringify(action.payload));
+      return { ...state, cart: { ...state.cart, items: action.payload } };
     }
     default:
       return state;
