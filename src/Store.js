@@ -3,7 +3,7 @@ import { createContext, useReducer } from 'react';
 
 export const Store = createContext();
 
-const API = 'http://localhost:5000/api/'; //'http://localhost:5000/api/orders/checkCart' 'https://betabackend-17nq.onrender.com/api/orders/checkCart'
+const API = 'https://betabackend-17nq.onrender.com/api/'; //'http://localhost:5000/api/orders/checkCart' 'https://betabackend-17nq.onrender.com/api/orders/checkCart'
 
 const cheackLocalStorage = async (key, defaultValue) => {
   const storedValue = localStorage.getItem(key);
