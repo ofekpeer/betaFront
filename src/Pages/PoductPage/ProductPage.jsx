@@ -63,7 +63,7 @@ export default function ProductPage() {
   );
 
   // תחליף למספר שלך:
-  const waPhone = '972501234567';
+  const waPhone = '0507487234';
   const waLink = `https://wa.me/${waPhone}?text=${waText}`;
 
   const onAddToCart = () => {
