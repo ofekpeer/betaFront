@@ -52,8 +52,7 @@ export default function CartPage() {
 
   const discount = useMemo(() => {
     // קופון דמה: GOLD10 נותן 10% על subtotal
-    if (couponCN )
-      return Math.round(subtotal * (couponCN.discount/100));
+    if (couponCN) return Math.round(subtotal * (couponCN.discount / 100));
     return 0;
   }, [couponCN, subtotal]);
 
@@ -116,12 +115,15 @@ export default function CartPage() {
       const res = await axios.post('/api/coupon/checkCoupon', coupon);
       console.log(res.data);
       if (res.data) {
-        console.log(res.data)
+        console.log(res.data);
         ctxDispatch({
           type: 'ADD COUPON',
           payload: res.data,
         });
-        setCouponMsg({ type: 'ok', text: `קופון הופעל חסכת ${res.data.discount}% ✅` });
+        setCouponMsg({
+          type: 'ok',
+          text: `קופון הופעל חסכת ${res.data.discount}% ✅`,
+        });
       } else {
         setCouponMsg({ type: 'err', text: 'הקופון לא תקף / לא קיים.' });
       }
@@ -131,20 +133,29 @@ export default function CartPage() {
   };
 
   const goCheckout = async () => {
-    try{
+    if (window.gtag) {
+      window.gtag('event', 'begin_checkout', {
+        currency: 'ILS',
+        value: total,
+        items: items.map((it) => ({
+          item_id: it._id,
+          item_name: it.name,
+          price: Number(it.price),
+          quantity: it.quantity,
+        })),
+      });
+    }
+    try {
       //reduild befor checkout
-      const res = await axios.post('/api/orders/goToCheckOut', {state});
-        ctxDispatch({
-          type: 'REBUILD',
-          payload: res.data.items,
-        });
-        navigate("/checkout")
-    }
-    catch{
+      const res = await axios.post('/api/orders/goToCheckOut', { state });
+      ctxDispatch({
+        type: 'REBUILD',
+        payload: res.data.items,
+      });
+      navigate('/checkout');
+    } catch {}
 
-    }
-
-    //navigate("/checkout") 
+    //navigate("/checkout")
   };
 
   return pageLoading ? (
