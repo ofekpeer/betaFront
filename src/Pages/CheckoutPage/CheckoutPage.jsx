@@ -43,6 +43,12 @@ export default function CheckoutPage() {
     return items.reduce((sum, it) => sum + Number(it.price) * it.quantity, 0);
   }, [items]);
 
+  const discount = useMemo(() => {
+    // קופון דמה: GOLD10 נותן 10% על subtotal
+    if (couponCN) return (subtotal * (couponCN.discount / 100)).toFixed(2);
+    return 0;
+  }, [couponCN, subtotal]);
+
   const shipping = useMemo(() => {
     if (items.length === 0) return 0;
     if (deliveryMethod === 'pickup') return SHIPPING_PICKUP;
@@ -50,9 +56,12 @@ export default function CheckoutPage() {
   }, [items.length, deliveryMethod, subtotal]);
 
   const total = useMemo(
-    () => Math.max(0, subtotal + shipping),
-    [subtotal, shipping],
+    () => Math.max(0, subtotal - discount + shipping).toFixed(2),
+    [subtotal, discount, shipping],
   );
+
+
+
 
   // ===== actions =====
   const inc = (i) => {
@@ -427,7 +436,7 @@ export default function CheckoutPage() {
                     <span>הנחה</span>
                     <b>
                       {couponCN.discount
-                        ? `₪${(subtotal * (couponCN.discount / 100)).toFixed(2)}`
+                        ? `₪${discount}`
                         : `₪0`}
                     </b>
                   </div>
@@ -437,7 +446,7 @@ export default function CheckoutPage() {
                   <div className="ckTotal">
                     <span>סה״כ</span>
                     <b>
-                      ₪{(subtotal * (1 - couponCN.discount / 100)).toFixed(2)}
+                      ₪{total}
                     </b>
                   </div>
 

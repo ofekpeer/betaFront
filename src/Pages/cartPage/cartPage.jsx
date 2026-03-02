@@ -52,7 +52,7 @@ export default function CartPage() {
 
   const discount = useMemo(() => {
     // קופון דמה: GOLD10 נותן 10% על subtotal
-    if (couponCN) return Math.round(subtotal * (couponCN.discount / 100));
+    if (couponCN) return subtotal * (couponCN.discount / 100).toFixed(2);
     return 0;
   }, [couponCN, subtotal]);
 
