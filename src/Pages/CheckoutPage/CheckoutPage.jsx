@@ -92,6 +92,7 @@ export default function CheckoutPage() {
     }
     return null;
   };
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -100,9 +101,21 @@ export default function CheckoutPage() {
       alert(err);
       return;
     }
+    const params = new URLSearchParams({
+      action: 'pay',
+      Masof: '5603960631',
+      PassP: 'ofekpeerPpi30672!', // מה שהגדרת בפורטל
+      Amount: '50',
+      Info: 'Order123',
+      UTF8: 'True',
+      UTF8out: 'True',
+      PageLang: 'HEB',
+      Tash: '12',
+      FixTash: 'True',
+    });
 
-    window.location.href =
-      'https://icom.yaad.net/p/?Masof=5603960631&Amount=50&ClientName=Ofek&Info=Order123&PassP=ofekpeerPpi30672!&action=pay';
+    const url = `https://icom.yaad.net/p/?${params.toString()}`;
+    window.location.assign(url);
   };
 
   return (
