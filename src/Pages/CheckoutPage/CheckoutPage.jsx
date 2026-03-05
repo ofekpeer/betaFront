@@ -5,6 +5,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/footer/Footer';
 import { Store } from '../../Store';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const clampQty = (n) => Math.max(1, Math.min(99, n));
 
@@ -101,22 +102,13 @@ export default function CheckoutPage() {
       alert(err);
       return;
     }
-    const params = new URLSearchParams({
-      action: 'pay',
-      Masof: '5603960631',
-      PassP: 'ofekpeerPpi30672!', // מה שהגדרת בפורטל
-      Amount: '50',
-      Info: 'Order123',
-      UTF8: 'True',
-      UTF8out: 'True',
-      PageLang: 'HEB',
-      Tash: '12',
-      key: "59742a8a333b3b17da581c348504652cf6d52b48",
-      FixTash: 'True',
-    });
 
-    const url = `https://icom.yaad.net/p/?${params.toString()}`;
-    window.location.assign(url);
+    const sign = await axios.get(
+      'https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=59742a8a333b3b17da581c348504652cf6d52b48&PassP=ofekpeerPpi30672!&Masof=5603960631&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=098610338&cell=050555555555&email=test@yaad.net&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1',
+    );
+
+    console.log(sign);
+    //    window.location.assign(url);
   };
 
   return (
