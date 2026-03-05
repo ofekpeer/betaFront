@@ -60,9 +60,6 @@ export default function CheckoutPage() {
     [subtotal, discount, shipping],
   );
 
-
-
-
   // ===== actions =====
   const inc = (i) => {
     const item = items.find(
@@ -110,11 +107,8 @@ export default function CheckoutPage() {
     // 3) השרת מחשב מחיר סופי בעצמו ומחזיר order
     //
     // כרגע דמו:
-    alert(
-      `הזמנה נשלחה (דמו)\n\nשם: ${fullName}\nטלפון: ${phone}\nאימייל: ${gmail}\nסה"כ: ₪${total.toFixed(
-        2,
-      )}`,
-    );
+    navigate("https://icom.yaad.net/p/?Masof=5603960631&Amount=50&ClientName=Ofek&Info=Order123&PassP=ofekpeerPpi30672!&action=pay")
+    
   };
 
   return (

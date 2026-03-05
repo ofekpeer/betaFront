@@ -145,6 +145,7 @@ export default function CartPage() {
         })),
       });
     }
+
     try {
       //reduild befor checkout
       const res = await axios.post('/api/orders/goToCheckOut', { state });
