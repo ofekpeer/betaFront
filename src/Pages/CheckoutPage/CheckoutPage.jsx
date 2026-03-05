@@ -92,23 +92,17 @@ export default function CheckoutPage() {
     }
     return null;
   };
-
   const onSubmit = async (e) => {
     e.preventDefault();
+
     const err = validate();
     if (err) {
       alert(err);
       return;
     }
 
-    // כאן אתה שולח לשרת:
-    // 1) cartItems = [{productId, qty, size, style}] בלבד (לא מחיר!)
-    // 2) פרטי משלוח + שיטת תשלום
-    // 3) השרת מחשב מחיר סופי בעצמו ומחזיר order
-    //
-    // כרגע דמו:
-    navigate("https://icom.yaad.net/p/?Masof=5603960631&Amount=50&ClientName=Ofek&Info=Order123&PassP=ofekpeerPpi30672!&action=pay")
-    
+    window.location.href =
+      'https://icom.yaad.net/p/?Masof=5603960631&Amount=50&ClientName=Ofek&Info=Order123&PassP=ofekpeerPpi30672&action=pay';
   };
 
   return (
@@ -428,20 +422,14 @@ export default function CheckoutPage() {
 
                   <div className="ckRow green">
                     <span>הנחה</span>
-                    <b>
-                      {couponCN.discount
-                        ? `₪${discount}`
-                        : `₪0`}
-                    </b>
+                    <b>{couponCN.discount ? `₪${discount}` : `₪0`}</b>
                   </div>
 
                   <div className="ckHr" />
 
                   <div className="ckTotal">
                     <span>סה״כ</span>
-                    <b>
-                      ₪{total}
-                    </b>
+                    <b>₪{total}</b>
                   </div>
 
                   {deliveryMethod === 'courier' &&
