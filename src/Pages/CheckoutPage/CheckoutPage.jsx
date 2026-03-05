@@ -102,7 +102,7 @@ export default function CheckoutPage() {
     }
 
     window.location.href =
-      'https://icom.yaad.net/p/?Masof=5603960631&Amount=50&ClientName=Ofek&Info=Order123&PassP=ofekpeerPpi30672&action=pay';
+      'https://icom.yaad.net/p/?Masof=5603960631&Amount=50&ClientName=Ofek&Info=Order123&PassP=ofekpeerPpi30672!&action=pay';
   };
 
   return (
