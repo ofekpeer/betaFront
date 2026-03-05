@@ -104,17 +104,7 @@ export default function CheckoutPage() {
     }
 
     const { data } = await axios.post('/api/orders/create', {
-      amount: 50,
-      orderId: 'ORDER123',
-      customer: {
-        firstName: 'Ofek',
-        lastName: '',
-        email: 'test@test.com',
-        phone: '0500000000',
-        city: 'Tel Aviv',
-        street: 'Main 1',
-        zip: '00000',
-      },
+
     });
 
     console.log(data);
