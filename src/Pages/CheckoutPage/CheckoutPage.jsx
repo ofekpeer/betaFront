@@ -111,6 +111,7 @@ export default function CheckoutPage() {
       UTF8out: 'True',
       PageLang: 'HEB',
       Tash: '12',
+      key: "59742a8a333b3b17da581c348504652cf6d52b48",
       FixTash: 'True',
     });
 
