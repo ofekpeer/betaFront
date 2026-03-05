@@ -103,7 +103,7 @@ export default function CheckoutPage() {
       return;
     }
 
-    const { data } = await axios.post('/api/payments/yaad/create', {
+    const { data } = await axios.post('/api/orders/create', {
       amount: 50,
       orderId: 'ORDER123',
       customer: {
