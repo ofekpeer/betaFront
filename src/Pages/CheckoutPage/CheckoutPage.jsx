@@ -109,7 +109,7 @@ export default function CheckoutPage() {
 
     console.log(data);
 
-    window.location.href = data.payUrl; // <-- זה חשוב  };
+    //window.location.href = data.payUrl; // <-- זה חשוב  };
   };
   return (
     <div className="ck lp" dir="rtl">
