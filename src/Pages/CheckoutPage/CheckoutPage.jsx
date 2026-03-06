@@ -1,5 +1,5 @@
 // src/pages/CheckoutPage/CheckoutPage.jsx
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { cache, useContext, useEffect, useMemo, useState } from 'react';
 import './CheckoutPage.css';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/footer/Footer';
@@ -96,14 +96,15 @@ export default function CheckoutPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    
     const err = validate();
     if (err) {
       alert(err);
       return;
     }
 
-    const data = await axios.post('/api/create', {
+      try{
+      const data = await axios.post('/api/orders/create', {
       amount: 10,
       orderId: 'order_1772',
       userId: '000000000',
@@ -112,10 +113,14 @@ export default function CheckoutPage() {
       email: 'test@yaad.net',
       phone: '0500000000',
     });
+    console.log(data)
+  }
+  catch(err){
+    
+    console.error(err);
+  }
 
-    console.log(data);
-
-    window.location.assign(data.redirectUrl);
+    //window.location.assign(data.redirectUrl);
   };
 
   return (
