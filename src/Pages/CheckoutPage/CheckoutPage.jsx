@@ -96,31 +96,31 @@ export default function CheckoutPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    
+
     const err = validate();
     if (err) {
       alert(err);
       return;
     }
 
-      try{
+    try {
       const data = await axios.post('/api/orders/create', {
-      amount: 10,
-      orderId: 'order_1772',
-      userId: '000000000',
-      clientName: 'Israel',
-      clientLName: 'Israeli',
-      email: 'test@yaad.net',
-      phone: '0500000000',
-    });
-    console.log(data)
-  }
-  catch(err){
-    
-    console.error(err);
-  }
+        amount: 10,
+        orderId: 'order_1772',
+        userId: '000000000',
+        clientName: 'Israel',
+        clientLName: 'Israeli',
+        email: 'test@yaad.net',
+        phone: '0500000000',
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
 
-    //window.location.assign(data.redirectUrl);
+    window.location.assign(
+      'https://icom.yaad.net/p/?Masof=5603960631&Amount=100&Info=Order123&UserId=000000000&ClientName=Ofek&ClientLName=Peer&phone=0501234567&email=test@test.com&UTF8=True&UTF8out=True&PageLang=HEB',
+    );
   };
 
   return (
