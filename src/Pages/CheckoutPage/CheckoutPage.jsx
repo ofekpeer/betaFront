@@ -96,31 +96,32 @@ export default function CheckoutPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    
+
     const err = validate();
     if (err) {
       alert(err);
       return;
     }
     //https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=59742a8a333b3b17da581c348504652cf6d52b48&PassP=yaad&Masof=5603960631&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=0507487234&cell=0507487234&email=ofekpeer3030@gmail.com&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1
-    window.location.assign("https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=7110eda4d09e062aa5e4a390b0a572ac0d2c0220&PassP=yaad&Masof=0010131918&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=098610338&cell=050555555555&email=test@yaad.net&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1");
-  //     try{
-  //     const data = await axios.post('/api/orders/create', {
-  //     amount: 10,
-  //     orderId: 'order_1772',
-  //     userId: '000000000',
-  //     clientName: 'Israel',
-  //     clientLName: 'Israeli',
-  //     email: 'test@yaad.net',
-  //     phone: '0500000000',
-  //   });
-  //   console.log(data)
-  // }
-  // catch(err){
-    
-  //   console.error(err);
-  // }
+    window.location.assign(
+      'https://icom.yaad.net/p/?action=pay&Amount=10&ClientLName=Isareli&ClientName=Israel&Coin=1&FixTash=False&Info=test-api&J5=False&Masof=0010131918&MoreData=True&Order=12345678910&PageLang=HEB&Postpone=False&Pritim=True&SendHesh=True&ShowEngTashText=False&Sign=True&Tash=2&UTF8=True&UTF8out=True&UserId=203269535&action=pay&cell=050555555555&city=netanya&email=test%40yaad.net&heshDesc=%5B0~Item%201~1~8%5D%5B0~Item%202~2~1%5D&phone=098610338&sendemail=True&street=levanon%203&tmp=1&zip=42361&signature=908f05b9905e64bed97f3fbdb800151cb175069b5053bfda55d48d716db441c8',
+    );
+    //     try{
+    //     const data = await axios.post('/api/orders/create', {
+    //     amount: 10,
+    //     orderId: 'order_1772',
+    //     userId: '000000000',
+    //     clientName: 'Israel',
+    //     clientLName: 'Israeli',
+    //     email: 'test@yaad.net',
+    //     phone: '0500000000',
+    //   });
+    //   console.log(data)
+    // }
+    // catch(err){
 
+    //   console.error(err);
+    // }
   };
 
   return (
