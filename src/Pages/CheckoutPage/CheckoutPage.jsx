@@ -102,17 +102,20 @@ export default function CheckoutPage() {
       alert(err);
       return;
     }
-    const { data } = await axios.post('/api/orders/create', {
+
+    const data = await axios.post('/api/create', {
       amount: 10,
-      customer: {
-        userId: '000000000',
-        firstName: 'Israel',
-        lastName: 'Israeli',
-        email: 'test@yaad.net',
-        phone: '0500000000',
-      },
+      orderId: 'order_1772',
+      userId: '000000000',
+      clientName: 'Israel',
+      clientLName: 'Israeli',
+      email: 'test@yaad.net',
+      phone: '0500000000',
     });
-    window.location.assign(data.payUrl);
+
+    console.log(data);
+
+    window.location.assign(data.redirectUrl);
   };
 
   return (
