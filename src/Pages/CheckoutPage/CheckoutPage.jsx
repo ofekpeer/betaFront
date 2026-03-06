@@ -102,7 +102,7 @@ export default function CheckoutPage() {
       alert(err);
       return;
     }
-    const { data } = await axios.post('/api/payments/yaad/create', {
+    const { data } = await axios.post('/api/orders/create', {
       amount: 10,
       customer: {
         userId: '000000000',
