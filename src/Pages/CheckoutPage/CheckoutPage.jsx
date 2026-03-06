@@ -120,7 +120,7 @@ export default function CheckoutPage() {
     console.error(err);
   }
 
-    window.location.assign("https://icom.yaad.net/p/?action=pay&Masof=5603960631&Amount=100&Info=Order123&UserId=000000000&ClientName=Ofek&ClientLName=Peer&phone=0501234567&email=test@test.com&UTF8=True&UTF8out=True&PageLang=HEB");
+    window.location.assign("https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=59742a8a333b3b17da581c348504652cf6d52b48&PassP=yaad&Masof=5603960631&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=0507487234&cell=0507487234&email=ofekpeer3030@gmail.com&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1");
   };
 
   return (
