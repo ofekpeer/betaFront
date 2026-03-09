@@ -102,24 +102,24 @@ export default function CheckoutPage() {
       alert(err);
       return;
     }
-https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=7110eda4d09e062aa5e4a390b0a572ac0d2c0220&PassP=yaad&Masof=0010131918&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=098610338&cell=050555555555&email=test@yaad.net&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1
-    window.location.assign("https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=59742a8a333b3b17da581c348504652cf6d52b48&PassP=yaad&Masof=5603960631&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=0507487234&cell=0507487234&email=ofekpeer3030@gmail.com&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1");
-  //     try{
-  //     const data = await axios.post('/api/orders/create', {
-  //     amount: 10,
-  //     orderId: 'order_1772',
-  //     userId: '000000000',
-  //     clientName: 'Israel',
-  //     clientLName: 'Israeli',
-  //     email: 'test@yaad.net',
-  //     phone: '0500000000',
-  //   });
-  //   console.log(data)
-  // }
-  // catch(err){
+//https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=7110eda4d09e062aa5e4a390b0a572ac0d2c0220&PassP=yaad&Masof=0010131918&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=098610338&cell=050555555555&email=test@yaad.net&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1
+   // window.location.assign("https://icom.yaad.net/p/?action=APISign&What=SIGN&KEY=59742a8a333b3b17da581c348504652cf6d52b48&PassP=yaad&Masof=5603960631&Order=12345678910&Info=test-api&Amount=10&UTF8=True&UTF8out=True&UserId=203269535&ClientName=Israel&ClientLName=Isareli&street=levanon+3&city=netanya&zip=42361&phone=0507487234&cell=0507487234&email=ofekpeer3030@gmail.com&Tash=2&FixTash=False&ShowEngTashText=False&Coin=1&Postpone=False&J5=False&Sign=True&MoreData=True&sendemail=True&SendHesh=True&heshDesc=[0~Item 1~1~8][0~Item 2~2~1]&Pritim=True&PageLang=HEB&tmp=1");
+      try{
+      const data = await axios.post('/api/orders/create', {
+      amount: 10,
+      orderId: 'order_1772',
+      userId: '000000000',
+      clientName: 'Israel',
+      clientLName: 'Israeli',
+      email: 'test@yaad.net',
+      phone: '0500000000',
+    });
+    console.log(data)
+  }
+  catch(err){
     
-  //   console.error(err);
-  // }
+    console.error(err);
+  }
 
   };
 
