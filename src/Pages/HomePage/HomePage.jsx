@@ -46,12 +46,7 @@ export default function HomePage() {
       }
     };
     getProducts();
-    const timeout = () =>
-      setTimeout(() => {
-        setPageLoading(false);
-      }, 1000);
-    timeout();
-    return clearTimeout(timeout);
+    setPageLoading(false);
   }, []);
 
   return pageLoading ? (

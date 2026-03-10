@@ -29,12 +29,7 @@ export default function CartPage() {
       } catch (error) {}
     };
     getProducts();
-    const timeout = () =>
-      setTimeout(() => {
-        setPageLoading(false);
-      }, 1000);
-    timeout();
-    return clearTimeout(timeout);
+    setPageLoading(false);
   }, []);
 
   const [coupon, setCoupon] = useState({ name: '', discount: 0 });

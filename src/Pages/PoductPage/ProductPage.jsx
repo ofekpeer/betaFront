@@ -43,12 +43,7 @@ export default function ProductPage() {
       }
     };
     getProducts();
-    const timeout = () =>
-      setTimeout(() => {
-        setPageLoading(false);
-      }, 1000);
-    timeout();
-    return clearTimeout(timeout);
+    setPageLoading(false);
   }, []);
 
   const discountPct = useMemo(() => {
